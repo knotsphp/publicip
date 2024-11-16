@@ -59,3 +59,7 @@ native-myip was created by Eser DENIZ.
 ## 📝 License
 
 native-myip is licensed under the MIT License. See LICENSE for more information.
+
+## Alternatives
+If you are not pleased with this library, you can check the following alternatives:
+- https://github.com/martinlindhe/php-myip
