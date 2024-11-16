@@ -1,0 +1,48 @@
+{
+    "name": "srwiez/native-myip",
+    "description": "Retrieve your IP address from any operating system",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SRWieZ\\Native\\MyIP\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Eser DENIZ",
+            "email": "srwiez@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.18",
+        "pestphp/pest": "^3.5",
+        "phpstan/phpstan": "^2.0",
+        "symfony/var-dumper": "^7.1",
+        "spatie/ray": "^1.41"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+
+        "test": "./vendor/bin/pest -p",
+        "pint": "./vendor/bin/pint",
+        "phpstan": "./vendor/bin/phpstan",
+        "static": [
+            "@composer pint",
+            "@composer phpstan"
+        ],
+        "qa": [
+            "@composer pint",
+            "@composer phpstan",
+            "@composer test"
+        ]
+    }
+}
