@@ -7,4 +7,4 @@ parameters:
         - src
 #        - tests
     ignoreErrors:
-#        - '#Some known issue pattern#'
+#        -

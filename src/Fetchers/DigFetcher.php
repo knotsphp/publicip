@@ -72,20 +72,25 @@ class DigFetcher implements Fetcher
             default => $provider->getNameServer(),
         };
 
+        $host = match ($versionToResolve) {
+            IpVersion::v4 => $provider->getIPv4Host(),
+            IpVersion::v6 => $provider->getIPv6Host(),
+            default => $provider->getHost(),
+        };
+
         // If the provider does not have a name server for the specified IP version, return null
-        if (empty($nameServer)) {
+        if (empty($nameServer) || empty($host)) {
             return null;
         }
 
-        $cmd = sprintf('dig %s %s @%s +short', $provider->getRecordType(), $provider->getHost(), $nameServer);
+        $cmd = sprintf('dig %s %s @%s +short', $provider->getRecordType(), $host, $nameServer);
+        $response = shell_exec($cmd);
 
-        $ip = shell_exec($cmd);
-
-        if (empty($ip)) {
+        if (empty($response)) {
             return null;
         }
 
-        return trim($ip, " \n\r\t\v\0\"");
+        return $provider->parseResponse($response);
     }
 
     public static function isSupported(): bool
