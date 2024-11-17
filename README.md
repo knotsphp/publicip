@@ -87,12 +87,12 @@ FileGetContentsFetcher::$forceHTTP = true;
 
 `dig` provider list
 
-|            | IP4or6 | IPv4 | IPv6 | Reliable?                                                   |
-|------------|--------|------|------|-------------------------------------------------------------|
-| Cloudflare | ✅      | ✅    | ✅    | ✅                                                           |
-| Google     | ✅      |      |      | ✅                                                           |
-| OpenDNS    | ✅      | ✅    | ✅    | ⚠️ says they have blocked France & Portugal but works great |
-| Akamai     | ⚠️     | ⚠️   | ⚠️   | ⚠️ last digits of the IP can be wrong                       |
+|            | IP4or6 | IPv4 | IPv6 | Reliable?                                                                              |
+|------------|--------|------|------|----------------------------------------------------------------------------------------|
+| Cloudflare | ✅      | ✅    | ✅    | ✅                                                                                      |
+| Google     | ✅      |      |      | ✅                                                                                      |
+| OpenDNS    | ✅      | ✅    | ✅    | ⚠️ says they have blocked France & Portugal but seems to work in France in my testings |
+| Akamai     | ⚠️     | ⚠️   | ⚠️   | ⚠️ last digits of the IP can be wrong                                                  |
 
 HTTP whoami provider list
 
@@ -111,7 +111,6 @@ HTTP whoami provider list
 - PSR-18 HTTP fetcher with a way to choose psr compatible client so other tools can monitor outgoing requests
 - Write tests
 - Publish v1
-- Look for a way to get local networks and IP addresses
 
 ## 📦 Alternatives
 
