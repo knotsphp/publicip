@@ -1,8 +1,6 @@
 # native-myip
 
-[//]: # ([![Latest Stable Version]&#40;http://poser.pugx.org/knotsphp/publicip/v&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![Total Downloads]&#40;http://poser.pugx.org/knotsphp/publicip/downloads&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![Latest Unstable Version]&#40;http://poser.pugx.org/knotsphp/publicip/v/unstable&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![License]&#40;http://poser.pugx.org/knotsphp/publicip/license&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![PHP Version Require]&#40;http://poser.pugx.org/knotsphp/publicip/require/php&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41;)
-
-[//]: # (![GitHub Workflow Status &#40;with event&#41;]&#40;https://img.shields.io/github/actions/workflow/status/knotsphp/publicip/test.yml?label=Tests&#41;)
+[![Latest Stable Version](http://poser.pugx.org/knotsphp/publicip/v)](https://packagist.org/packages/knotsphp/publicip) [![Total Downloads](http://poser.pugx.org/knotsphp/publicip/downloads)](https://packagist.org/packages/knotsphp/publicip) [![Latest Unstable Version](http://poser.pugx.org/knotsphp/publicip/v/unstable)](https://packagist.org/packages/knotsphp/publicip) [![License](http://poser.pugx.org/knotsphp/publicip/license)](https://packagist.org/packages/knotsphp/publicip) [![PHP Version Require](http://poser.pugx.org/knotsphp/publicip/require/php)](https://packagist.org/packages/knotsphp/publicip) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/knotsphp/publicip/test.yml?label=Tests)
 A simple PHP library to get the public IP address of the current machine.
 
 This library uses `dig` or HTTP requests to obtain the public IP address of the current machine by utilizing publicly
