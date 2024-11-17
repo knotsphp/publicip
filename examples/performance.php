@@ -1,7 +1,7 @@
 <?php
 
-use SRWieZ\Native\MyIP\Fetchers\CurlFetcher;
-use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
+use KnotsPHP\PublicIP\Fetchers\CurlFetcher;
+use KnotsPHP\PublicIP\Fetchers\DigFetcher;
 
 DigFetcher::$isSupported = true;
 CurlFetcher::$forceHTTP = true;

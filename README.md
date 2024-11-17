@@ -1,8 +1,8 @@
 # native-myip
 
-[//]: # ([![Latest Stable Version]&#40;http://poser.pugx.org/srwiez/native-myip/v&#41;]&#40;https://packagist.org/packages/srwiez/native-myip&#41; [![Total Downloads]&#40;http://poser.pugx.org/srwiez/native-myip/downloads&#41;]&#40;https://packagist.org/packages/srwiez/native-myip&#41; [![Latest Unstable Version]&#40;http://poser.pugx.org/srwiez/native-myip/v/unstable&#41;]&#40;https://packagist.org/packages/srwiez/native-myip&#41; [![License]&#40;http://poser.pugx.org/srwiez/native-myip/license&#41;]&#40;https://packagist.org/packages/srwiez/native-myip&#41; [![PHP Version Require]&#40;http://poser.pugx.org/srwiez/native-myip/require/php&#41;]&#40;https://packagist.org/packages/srwiez/native-myip&#41;)
+[//]: # ([![Latest Stable Version]&#40;http://poser.pugx.org/knotsphp/publicip/v&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![Total Downloads]&#40;http://poser.pugx.org/knotsphp/publicip/downloads&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![Latest Unstable Version]&#40;http://poser.pugx.org/knotsphp/publicip/v/unstable&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![License]&#40;http://poser.pugx.org/knotsphp/publicip/license&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41; [![PHP Version Require]&#40;http://poser.pugx.org/knotsphp/publicip/require/php&#41;]&#40;https://packagist.org/packages/knotsphp/publicip&#41;)
 
-[//]: # (![GitHub Workflow Status &#40;with event&#41;]&#40;https://img.shields.io/github/actions/workflow/status/srwiez/native-myip/test.yml?label=Tests&#41;)
+[//]: # (![GitHub Workflow Status &#40;with event&#41;]&#40;https://img.shields.io/github/actions/workflow/status/knotsphp/publicip/test.yml?label=Tests&#41;)
 A simple PHP library to get the public IP address of the current machine.
 
 This library uses `dig` or HTTP requests to obtain the public IP address of the current machine by utilizing publicly
@@ -14,7 +14,7 @@ However, it also includes a flexible API that allows you to use different fetche
 ## 🚀 Installation
 
 ```bash
-composer require srwiez/native-myip
+composer require knotsphp/publicip
 ```
 
 ## 📚 Usage
@@ -22,7 +22,7 @@ composer require srwiez/native-myip
 Easiest way to get the public IP address of the current machine is to use the `PublicIP::get()` method.
 
 ```php
-use SRWieZ\Native\MyIP\Finders\{ PublicIP, PublicIPv4, PublicIPv6 };
+use KnotsPHP\PublicIP\Finders\{ PublicIP, PublicIPv4, PublicIPv6 };
 
 $ipv4 = PublicIPv4::get(); // returns your IPv4
 $ipv6 = PublicIPv6::get(); // returns your IPv6
@@ -34,9 +34,9 @@ $ipv4or6 = PublicIP::get(); // returns either IPv4 or IPv6
 If you want to use a specific fetcher, or a specific provider, you can use the `PublicIPv4::finder()->fetch()` method.
 
 ```php
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
-use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
-use SRWieZ\Native\MyIP\Finders\PublicIPv4;
+use KnotsPHP\PublicIP\Enums\DnsProvider;
+use KnotsPHP\PublicIP\Fetchers\DigFetcher;
+use KnotsPHP\PublicIP\Finders\PublicIPv4;
 
 $ipv4 = PublicIPv4::finder()
     ->addFetcher((new DigFetcher())
@@ -49,9 +49,9 @@ $ipv4 = PublicIPv4::finder()
 You can also use a `Fetcher` directly to get the IP address.
 
 ```php
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
-use SRWieZ\Native\MyIP\Enums\IpVersion;
-use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
+use KnotsPHP\PublicIP\Enums\DnsProvider;
+use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Fetchers\DigFetcher;
 
 $ipv4 = (new DigFetcher)->from(DnsProvider::Cloudflare)->fetch(IpVersion::v4);
 ```
@@ -67,7 +67,7 @@ It works both ways; if you are sure that your machine does not have `dig` instal
 prevent unnecessary checks.
 
 ```php
-use SRWieZ\Native\MyIP\Fetcher\DigFetcher;
+use KnotsPHP\PublicIP\Fetcher\DigFetcher;
 
 DigFetcher::$isSupported = true;
 ```
@@ -76,8 +76,8 @@ If you use the `CurlFetcher` or `FileGetContentsFetcher`, you can set the `force
 Some whoami services do not support HTTPS anyway as they are meant to be used in scripts like this `curl ifconfig.co`.
 
 ```php
-use SRWieZ\Native\MyIP\Fetcher\CurlFetcher;
-use SRWieZ\Native\MyIP\Fetchers\FileGetContentsFetcher;
+use KnotsPHP\PublicIP\Fetcher\CurlFetcher;
+use KnotsPHP\PublicIP\Fetchers\FileGetContentsFetcher;
 
 CurlFetcher::$forceHTTP = true;
 FileGetContentsFetcher::$forceHTTP = true;

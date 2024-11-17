@@ -1,5 +1,5 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Exceptions;
+namespace KnotsPHP\PublicIP\Exceptions;
 
 class NoFetcherSpecified extends Exception {}

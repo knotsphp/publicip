@@ -1,13 +1,13 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Abstracts;
+namespace KnotsPHP\PublicIP\Abstracts;
 
-use SRWieZ\Native\MyIP\Contracts\FetcherContract;
-use SRWieZ\Native\MyIP\Contracts\FinderContract;
-use SRWieZ\Native\MyIP\Enums\IpVersion;
-use SRWieZ\Native\MyIP\Exceptions\IpAddressNotFound;
-use SRWieZ\Native\MyIP\Exceptions\NoFetcherSpecified;
-use SRWieZ\Native\MyIP\Exceptions\UnmatchedIpVersionReceived;
+use KnotsPHP\PublicIP\Contracts\FetcherContract;
+use KnotsPHP\PublicIP\Contracts\FinderContract;
+use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Exceptions\IpAddressNotFound;
+use KnotsPHP\PublicIP\Exceptions\NoFetcherSpecified;
+use KnotsPHP\PublicIP\Exceptions\UnmatchedIpVersionReceived;
 
 abstract class Finder implements FinderContract
 {

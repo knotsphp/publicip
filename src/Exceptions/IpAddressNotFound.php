@@ -1,5 +1,5 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Exceptions;
+namespace KnotsPHP\PublicIP\Exceptions;
 
 class IpAddressNotFound extends Exception {}

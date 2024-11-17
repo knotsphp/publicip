@@ -1,6 +1,6 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Enums;
+namespace KnotsPHP\PublicIP\Enums;
 
 enum IpVersion: string
 {

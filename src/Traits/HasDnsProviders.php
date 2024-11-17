@@ -1,8 +1,8 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Traits;
+namespace KnotsPHP\PublicIP\Traits;
 
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
+use KnotsPHP\PublicIP\Enums\DnsProvider;
 
 trait HasDnsProviders
 {

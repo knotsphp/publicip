@@ -1,8 +1,8 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Exceptions;
+namespace KnotsPHP\PublicIP\Exceptions;
 
-use SRWieZ\Native\MyIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Enums\IpVersion;
 
 class UnmatchedIpVersionReceived extends Exception
 {

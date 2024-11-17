@@ -1,8 +1,8 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Contracts;
+namespace KnotsPHP\PublicIP\Contracts;
 
-use SRWieZ\Native\MyIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Enums\IpVersion;
 
 interface FetcherContract
 {

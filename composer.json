@@ -1,11 +1,11 @@
 {
-    "name": "srwiez/native-myip",
-    "description": "Retrieve your IP address from any operating system",
+    "name": "knotsphp/publicip",
+    "description": "Retrieve your public IP address from any operating system",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "SRWieZ\\Native\\MyIP\\": "src/"
+            "KnotsPHP\\PublicIP\\": "src/"
         }
     },
     "authors": [

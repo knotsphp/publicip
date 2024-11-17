@@ -1,5 +1,5 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Exceptions;
+namespace KnotsPHP\PublicIP\Exceptions;
 
 class Exception extends \Exception {}

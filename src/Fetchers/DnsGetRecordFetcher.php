@@ -1,12 +1,12 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Fetchers;
+namespace KnotsPHP\PublicIP\Fetchers;
 
-use SRWieZ\Native\MyIP\Contracts\FetcherContract;
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
-use SRWieZ\Native\MyIP\Enums\IpVersion;
-use SRWieZ\Native\MyIP\Exceptions\Exception;
-use SRWieZ\Native\MyIP\Traits\HasDnsProviders;
+use KnotsPHP\PublicIP\Contracts\FetcherContract;
+use KnotsPHP\PublicIP\Enums\DnsProvider;
+use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Exceptions\Exception;
+use KnotsPHP\PublicIP\Traits\HasDnsProviders;
 
 /**
  * NOT RECOMMENDED: This fetcher uses the dns_get_record function

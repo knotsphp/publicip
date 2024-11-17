@@ -1,14 +1,14 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Finders;
+namespace KnotsPHP\PublicIP\Finders;
 
-use SRWieZ\Native\MyIP\Abstracts\Finder;
-use SRWieZ\Native\MyIP\Contracts\FetcherContract;
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
-use SRWieZ\Native\MyIP\Enums\HttpProvider;
-use SRWieZ\Native\MyIP\Enums\IpVersion;
-use SRWieZ\Native\MyIP\Fetchers\CurlFetcher;
-use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
+use KnotsPHP\PublicIP\Abstracts\Finder;
+use KnotsPHP\PublicIP\Contracts\FetcherContract;
+use KnotsPHP\PublicIP\Enums\DnsProvider;
+use KnotsPHP\PublicIP\Enums\HttpProvider;
+use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Fetchers\CurlFetcher;
+use KnotsPHP\PublicIP\Fetchers\DigFetcher;
 
 final class PublicIPv6 extends Finder
 {

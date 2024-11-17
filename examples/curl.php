@@ -2,11 +2,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use SRWieZ\Native\MyIP\Enums\HttpProvider;
-use SRWieZ\Native\MyIP\Fetchers\CurlFetcher;
-use SRWieZ\Native\MyIP\Finders\PublicIP;
-use SRWieZ\Native\MyIP\Finders\PublicIPv4;
-use SRWieZ\Native\MyIP\Finders\PublicIPv6;
+use KnotsPHP\PublicIP\Enums\HttpProvider;
+use KnotsPHP\PublicIP\Fetchers\CurlFetcher;
+use KnotsPHP\PublicIP\Finders\PublicIP;
+use KnotsPHP\PublicIP\Finders\PublicIPv4;
+use KnotsPHP\PublicIP\Finders\PublicIPv6;
 
 echo PublicIP::finder()
     ->addFetcher((new CurlFetcher)

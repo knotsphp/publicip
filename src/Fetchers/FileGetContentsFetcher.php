@@ -1,11 +1,11 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Fetchers;
+namespace KnotsPHP\PublicIP\Fetchers;
 
-use SRWieZ\Native\MyIP\Contracts\FetcherContract;
-use SRWieZ\Native\MyIP\Enums\HttpProvider;
-use SRWieZ\Native\MyIP\Enums\IpVersion;
-use SRWieZ\Native\MyIP\Traits\HasHttpProviders;
+use KnotsPHP\PublicIP\Contracts\FetcherContract;
+use KnotsPHP\PublicIP\Enums\HttpProvider;
+use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Traits\HasHttpProviders;
 
 class FileGetContentsFetcher implements FetcherContract
 {

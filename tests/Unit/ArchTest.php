@@ -1,32 +1,32 @@
 <?php
 
-use SRWieZ\Native\MyIP\Contracts\FetcherContract;
-use SRWieZ\Native\MyIP\Exceptions\Exception;
+use KnotsPHP\PublicIP\Contracts\FetcherContract;
+use KnotsPHP\PublicIP\Exceptions\Exception;
 
 arch('enums')
-    ->expect('SRWieZ\Native\MyIP\Enums')
+    ->expect('KnotsPHP\PublicIP\Enums')
     ->toBeEnums();
 
 arch('traits')
-    ->expect('SRWieZ\Native\MyIP\Traits')
+    ->expect('KnotsPHP\PublicIP\Traits')
     ->toBeTraits();
 
 arch('contracts')
-    ->expect('SRWieZ\Native\MyIP\Contracts')
+    ->expect('KnotsPHP\PublicIP\Contracts')
     ->toBeInterfaces();
 
 arch('exceptions')
-    ->expect('SRWieZ\Native\MyIP\Exceptions')
+    ->expect('KnotsPHP\PublicIP\Exceptions')
     ->toExtend(Exception::class)
     ->ignoring(Exception::class);
 
 arch('library.fetcher')
-    ->expect('SRWieZ\Native\MyIP\Fetchers')
+    ->expect('KnotsPHP\PublicIP\Fetchers')
     ->toImplement(FetcherContract::class);
 
 arch('library.finder')
-    ->expect('SRWieZ\Native\MyIP\Finders')
-    ->toExtend('SRWieZ\Native\MyIP\Abstracts\Finder')
+    ->expect('KnotsPHP\PublicIP\Finders')
+    ->toExtend('KnotsPHP\PublicIP\Abstracts\Finder')
     ->toBeFinal();
 
 arch('debug')->preset()->php();

@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use SRWieZ\Native\MyIP\Finders\PublicIPv6;
+use KnotsPHP\PublicIP\Finders\PublicIPv6;
 
 echo PublicIPv6::get();
 echo PHP_EOL;
