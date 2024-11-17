@@ -34,7 +34,9 @@ $ipv4or6 = PublicIP::get(); // returns either IPv4 or IPv6
 If you want to use a specific fetcher, or a specific provider, you can use the `PublicIPv4::finder()->fetch()` method.
 
 ```php
-use SRWieZ\Native\MyIP\Enums\DnsProvider;use SRWieZ\Native\MyIP\Fetchers\DigFetcher;use SRWieZ\Native\MyIP\Finders\PublicIPv4;
+use SRWieZ\Native\MyIP\Enums\DnsProvider;
+use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
+use SRWieZ\Native\MyIP\Finders\PublicIPv4;
 
 $ipv4 = PublicIPv4::finder()
     ->addFetcher((new DigFetcher())
