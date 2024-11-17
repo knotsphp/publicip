@@ -88,7 +88,7 @@ CurlFetcher::$forceHTTP = true;
 | Cloudflare | ✅      | ✅    | ✅    | ✅                                                           |
 | Google     | ✅      |      |      | ✅                                                           |
 | OpenDNS    | ✅      | ✅    | ✅    | ⚠️ says they have blocked France & Portugal but works great |
-| Akamai     | ✅      | ✅    | ✅    | ⚠️ last digits of the IP can be wrong                       |
+| Akamai     | ⚠️     | ⚠️   | ⚠️   | ⚠️ last digits of the IP can be wrong                       |
 
 HTTP whoami provider list
 
