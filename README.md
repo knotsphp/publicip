@@ -31,14 +31,14 @@ $ipv4or6 = PublicIP::get(); // returns either IPv4 or IPv6
 
 [//]: # (Talk about the default configuration)
 
-If you want to use a specific fetcher, or a specific provider, you can use the `IPv4::make()` method.
+If you want to use a specific fetcher, or a specific provider, you can use the `PublicIPv4::finder()->fetch()` method.
 
 ```php
 use SRWieZ\Native\MyIP\Enums\DnsProvider;use SRWieZ\Native\MyIP\Fetchers\DigFetcher;use SRWieZ\Native\MyIP\Finders\PublicIPv4;
 
 $ipv4 = PublicIPv4::finder()
     ->addFetcher((new DigFetcher())
-        ->from(DnsProvider::Akamai)))
+        ->from(DnsProvider::OpenDNS)))
     ->fetch();
 ```
 
@@ -70,13 +70,15 @@ use SRWieZ\Native\MyIP\Fetcher\DigFetcher;
 DigFetcher::$isSupported = true;
 ```
 
-If you use the `CurlFetcher`, you can set the `forceHTTP` property to `true` to use HTTP instead of HTTPS.
+If you use the `CurlFetcher` or `FileGetContentsFetcher`, you can set the `forceHTTP` property to `true` to use HTTP instead of HTTPS.
 Some whoami services do not support HTTPS anyway as they are meant to be used in scripts like this `curl ifconfig.co`.
 
 ```php
 use SRWieZ\Native\MyIP\Fetcher\CurlFetcher;
+use SRWieZ\Native\MyIP\Fetchers\FileGetContentsFetcher;
 
 CurlFetcher::$forceHTTP = true;
+FileGetContentsFetcher::$forceHTTP = true;
 ```
 
 ## 📖 Documentation
