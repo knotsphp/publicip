@@ -11,23 +11,22 @@ use KnotsPHP\PublicIP\Finders\PublicIPv6;
 echo PublicIP::finder()
     ->addFetcher((new CurlFetcher)
         ->addProvider(HttpProvider::cloudflare)
-        // ->all()
     )
     ->fetch();
 echo PHP_EOL;
 
 echo PublicIPv4::finder()
     ->addFetcher((new CurlFetcher)
-        ->addProvider(HttpProvider::cloudflare)
-        // ->onlyIPv4()
+        // ->addProvider(HttpProvider::cloudflare)
+        ->onlyIPv4()
     )
     ->fetch();
 echo PHP_EOL;
 
 echo PublicIPv6::finder()
     ->addFetcher((new CurlFetcher)
-        ->addProvider(HttpProvider::cloudflare)
-        // ->onlyIPv6()
+        // ->addProvider(HttpProvider::cloudflare)
+        ->onlyIPv6()
     )
     ->fetch();
 echo PHP_EOL;
