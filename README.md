@@ -22,7 +22,7 @@ composer require srwiez/native-myip
 Easiest way to get the public IP address of the current machine is to use the `PublicIP::get()` method.
 
 ```php
-use SRWieZ\Native\MyIP\Finders\PublicIP;use SRWieZ\Native\MyIP\Finders\PublicIPv4;use SRWieZ\Native\MyIP\Finders\PublicIPv6;
+use SRWieZ\Native\MyIP\Finders\{ PublicIP, PublicIPv4, PublicIPv6 };
 
 $ipv4 = PublicIPv4::get(); // returns your IPv4
 $ipv6 = PublicIPv6::get(); // returns your IPv6
