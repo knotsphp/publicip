@@ -3,8 +3,10 @@
 namespace SRWieZ\Native\MyIP\Traits;
 
 use SRWieZ\Native\MyIP\Contracts\Fetcher;
+use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Exceptions\IpAddressNotFound;
 use SRWieZ\Native\MyIP\Exceptions\NoFetcherSpecified;
+use SRWieZ\Native\MyIP\Exceptions\UnmatchedIpVersionReceived;
 
 trait HasFetchers
 {
@@ -52,17 +54,41 @@ trait HasFetchers
             throw new NoFetcherSpecified;
         }
 
+        $ip = null;
+        $checkIpVersion = true;
+
         // Check is he has ip_version property
         $ip_version = $this->resolveIpVersion();
 
         foreach ($this->fetchers as $fetcher) {
             $ip = $fetcher->fetch($ip_version);
-            if ($ip) {
+            $checkIpVersion = $this->checkIpVersion($ip, $ip_version);
+
+            if ($ip && $checkIpVersion) {
                 return $ip;
             }
         }
 
+        // @phpstan-ignore-next-line identical.alwaysTrue
+        if ($ip_version !== null && ! $checkIpVersion) {
+            throw new UnmatchedIpVersionReceived($ip, $ip_version);
+        }
+
         throw new IpAddressNotFound;
+    }
+
+    protected function checkIpVersion(?string $ip, ?IpVersion $ipVersion): bool
+    {
+        if (empty($ip)) {
+            return true;
+        }
+
+        return match ($ipVersion) {
+            IpVersion::v4 => filter_var($ip, FILTER_VALIDATE_IP, ['flags' => FILTER_FLAG_IPV4]) !== false,
+            IpVersion::v6 => filter_var($ip, FILTER_VALIDATE_IP, ['flags' => FILTER_FLAG_IPV6]) !== false,
+            default => true,
+        };
+
     }
 
     public static function get(): ?string

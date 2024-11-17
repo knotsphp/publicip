@@ -9,8 +9,8 @@ use SRWieZ\Native\MyIP\PublicIPv4;
 echo PublicIPv4::get();
 echo PHP_EOL;
 
-echo PublicIPv4::make()
+echo PublicIPv4::finder()
     ->addFetcher((new DigFetcher)
-        ->from(DnsProvider::Akamai))
+        ->from(DnsProvider::Google))
     ->fetch();
 echo PHP_EOL;

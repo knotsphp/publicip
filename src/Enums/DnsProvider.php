@@ -92,7 +92,7 @@ enum DnsProvider
         return array_filter(self::cases(), fn (self $provider) => $provider->getIPv6Nameserver() !== null);
     }
 
-    public function parseResponse(string $response): ?string
+    public function parseDigResponse(string $response): ?string
     {
         if ($this === self::Akamai) {
             $lines = array_map(function ($line) {

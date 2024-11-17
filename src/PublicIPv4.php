@@ -12,7 +12,7 @@ final class PublicIPv4 implements UsesFetchers
 {
     use HasFetchers;
 
-    public static function make(): static
+    public static function finder(): static
     {
         return new self;
     }

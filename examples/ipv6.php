@@ -9,8 +9,8 @@ use SRWieZ\Native\MyIP\PublicIPv6;
 echo PublicIPv6::get();
 echo PHP_EOL;
 
-echo PublicIPv6::make()
+echo PublicIPv6::finder()
     ->addFetcher((new DigFetcher)
-        ->from(DnsProvider::Akamai))
+        ->from(DnsProvider::Cloudflare))
     ->fetch();
 echo PHP_EOL;

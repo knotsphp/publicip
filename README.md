@@ -37,13 +37,27 @@ use SRWieZ\Native\MyIP\Enums\DnsProvider;
 use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
 use SRWieZ\Native\MyIP\PublicIPv4;
 
-$ipv4 = IPv4::make()
+$ipv4 = IPv4::finder()
     ->addFetcher((new DigFetcher())
         ->from(DnsProvider::Akamai)))
     ->fetch();
 ```
 
-### 🏎️ Performance
+### Advanced Usage
+
+You can also use a `Fetcher` directly to get the IP address.
+
+```php
+use SRWieZ\Native\MyIP\Enums\DnsProvider;
+use SRWieZ\Native\MyIP\Enums\IpVersion;
+use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
+
+$ipv4 = (new DigFetcher)->from(DnsProvider::Cloudflare)->fetch(IpVersion::v4);
+```
+
+Note that this returns null instead of throwing an exception if the fetcher fails.
+
+## 🏎️ Performance
 
 If you are sure that your machine has `dig` installed, you can speed up the process by setting the `isSupported`
 property to `true`.
@@ -57,9 +71,8 @@ use SRWieZ\Native\MyIP\Fetcher\DigFetcher;
 DigFetcher::$isSupported = true;
 ```
 
-### 📋 TODO
+## 📋 TODO
 
-- dns_get_record fetcher
 - PSR-18 HTTP fetcher
 - curl fetcher
 - A way to choose PSR-18 HTTP client so other tools can monitor outgoing requests
