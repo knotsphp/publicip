@@ -5,9 +5,11 @@
 [//]: # (![GitHub Workflow Status &#40;with event&#41;]&#40;https://img.shields.io/github/actions/workflow/status/srwiez/native-myip/test.yml?label=Tests&#41;)
 A simple PHP library to get the public IP address of the current machine.
 
-This library uses `dig` or HTTP requests to obtain the public IP address of the current machine by utilizing publicly available whoami services.
+This library uses `dig` or HTTP requests to obtain the public IP address of the current machine by utilizing publicly
+available whoami services.
 
-It comes with an opinionated default configuration to use the **fastest** and most **reliable** fetchers and providers. However, it also includes a flexible API that allows you to use different fetchers and different providers.
+It comes with an opinionated default configuration to use the **fastest** and most **reliable** fetchers and providers.
+However, it also includes a flexible API that allows you to use different fetchers and different providers.
 
 ## 🚀 Installation
 
@@ -76,6 +78,29 @@ use SRWieZ\Native\MyIP\Fetcher\CurlFetcher;
 
 CurlFetcher::$forceHTTP = true;
 ```
+
+## 📖 Documentation
+
+`dig` provider list
+
+|            | IP4or6 | IPv4 | IPv6 | Reliable?                                                   |
+|------------|--------|------|------|-------------------------------------------------------------|
+| Cloudflare | ✅      | ✅    | ✅    | ✅                                                           |
+| Google     | ✅      |      |      | ✅                                                           |
+| OpenDNS    | ✅      | ✅    | ✅    | ⚠️ says they have blocked France & Portugal but works great |
+| Akamai     | ✅      | ✅    | ✅    | ⚠️ last digits of the IP can be wrong                       |
+
+HTTP whoami provider list
+
+|                | IPv4 | IPv6 | IP4or6 | Note          |
+|----------------|------|------|--------|---------------|
+| ifconfig.co    | ✅    | ✅    | ✅      | Fast          |
+| ipify.org      | ✅    | ✅    | ✅      | Open-source   |
+| ifconfig.me    | ✅    | ✅    | ✅      |               |
+| icanhazip.com  | ✅    | ✅    | ✅      |               |
+| cloudflare.com | ✅    | ✅    | ✅      | Use more data |
+| ipinfo.io      | ✅    |      |        | ⚠️ only IPv4  |
+| amazonaws.com  | ✅    |      |        | ⚠️ only IPv4  |
 
 ## 📋 TODO
 
