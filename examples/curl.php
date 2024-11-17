@@ -4,9 +4,9 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use SRWieZ\Native\MyIP\Enums\HttpProvider;
 use SRWieZ\Native\MyIP\Fetchers\CurlFetcher;
-use SRWieZ\Native\MyIP\PublicIP;
-use SRWieZ\Native\MyIP\PublicIPv4;
-use SRWieZ\Native\MyIP\PublicIPv6;
+use SRWieZ\Native\MyIP\Finders\PublicIP;
+use SRWieZ\Native\MyIP\Finders\PublicIPv4;
+use SRWieZ\Native\MyIP\Finders\PublicIPv6;
 
 echo PublicIP::finder()
     ->addFetcher((new CurlFetcher)

@@ -1,21 +1,29 @@
 <?php
 
-namespace SRWieZ\Native\MyIP\Traits;
+namespace SRWieZ\Native\MyIP\Abstracts;
 
-use SRWieZ\Native\MyIP\Contracts\Fetcher;
+use SRWieZ\Native\MyIP\Contracts\FetcherContract;
+use SRWieZ\Native\MyIP\Contracts\FinderContract;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Exceptions\IpAddressNotFound;
 use SRWieZ\Native\MyIP\Exceptions\NoFetcherSpecified;
 use SRWieZ\Native\MyIP\Exceptions\UnmatchedIpVersionReceived;
 
-trait HasFetchers
+abstract class Finder implements FinderContract
 {
+    public static function finder(): static
+    {
+        return new static;
+    }
+
+    public function __construct() {}
+
     /**
-     * @var Fetcher[]
+     * @var FetcherContract[]
      */
     protected array $fetchers = [];
 
-    public function addFetcher(Fetcher $fetcher): static
+    public function addFetcher(FetcherContract $fetcher): static
     {
         $this->fetchers[] = $fetcher;
 
@@ -23,7 +31,7 @@ trait HasFetchers
     }
 
     /**
-     * @param  array<Fetcher>  $fetchers
+     * @param  array<FetcherContract>  $fetchers
      * @return $this
      */
     public function addFetchers(array $fetchers): static
@@ -33,7 +41,7 @@ trait HasFetchers
         return $this;
     }
 
-    public static function with(?Fetcher $provider = null): static
+    public static function with(?FetcherContract $provider = null): static
     {
         $instance = new static;
 
@@ -68,7 +76,6 @@ trait HasFetchers
             }
         }
 
-        // @phpstan-ignore-next-line identical.alwaysTrue
         if ($ip_version !== null && ! $checkIpVersion) {
             throw new UnmatchedIpVersionReceived($ip, $ip_version);
         }
@@ -92,8 +99,8 @@ trait HasFetchers
 
     public static function get(): ?string
     {
-        /** @var array<Fetcher> $fetchers */
-        $fetchers = array_filter(static::getDefaultFetchers(), function (Fetcher $fetcher) {
+        /** @var array<FetcherContract> $fetchers */
+        $fetchers = array_filter(static::getDefaultFetchers(), function (FetcherContract $fetcher) {
             return $fetcher::isSupported();
         });
 

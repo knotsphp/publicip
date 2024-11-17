@@ -2,9 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
-use SRWieZ\Native\MyIP\Fetchers\DnsGetRecordFetcher;
-use SRWieZ\Native\MyIP\PublicIP;
+use SRWieZ\Native\MyIP\Finders\PublicIP;
 
 echo PublicIP::get();
 echo PHP_EOL;

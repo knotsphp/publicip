@@ -2,12 +2,12 @@
 
 namespace SRWieZ\Native\MyIP\Fetchers;
 
-use SRWieZ\Native\MyIP\Contracts\Fetcher;
+use SRWieZ\Native\MyIP\Contracts\FetcherContract;
 use SRWieZ\Native\MyIP\Enums\HttpProvider;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Traits\HasHttpProviders;
 
-class CurlFetcher implements Fetcher
+class CurlFetcher implements FetcherContract
 {
     use HasHttpProviders;
 

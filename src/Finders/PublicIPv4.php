@@ -1,27 +1,19 @@
 <?php
 
-namespace SRWieZ\Native\MyIP;
+namespace SRWieZ\Native\MyIP\Finders;
 
-use SRWieZ\Native\MyIP\Contracts\Fetcher;
-use SRWieZ\Native\MyIP\Contracts\UsesFetchers;
+use SRWieZ\Native\MyIP\Abstracts\Finder;
+use SRWieZ\Native\MyIP\Contracts\FetcherContract;
 use SRWieZ\Native\MyIP\Enums\DnsProvider;
 use SRWieZ\Native\MyIP\Enums\HttpProvider;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Fetchers\CurlFetcher;
 use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
-use SRWieZ\Native\MyIP\Traits\HasFetchers;
 
-final class PublicIPv6 implements UsesFetchers
+final class PublicIPv4 extends Finder
 {
-    use HasFetchers;
-
-    public static function finder(): static
-    {
-        return new self;
-    }
-
     /**
-     * @return array<Fetcher>
+     * @return array<FetcherContract>
      */
     public static function getDefaultFetchers(): array
     {
@@ -39,6 +31,6 @@ final class PublicIPv6 implements UsesFetchers
 
     public function resolveIpVersion(): IpVersion
     {
-        return IpVersion::v6;
+        return IpVersion::v4;
     }
 }

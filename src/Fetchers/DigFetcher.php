@@ -2,12 +2,12 @@
 
 namespace SRWieZ\Native\MyIP\Fetchers;
 
-use SRWieZ\Native\MyIP\Contracts\Fetcher;
+use SRWieZ\Native\MyIP\Contracts\FetcherContract;
 use SRWieZ\Native\MyIP\Enums\DnsProvider;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Traits\HasDnsProviders;
 
-class DigFetcher implements Fetcher
+class DigFetcher implements FetcherContract
 {
     use HasDnsProviders;
 

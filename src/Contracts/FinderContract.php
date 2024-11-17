@@ -4,12 +4,14 @@ namespace SRWieZ\Native\MyIP\Contracts;
 
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 
-interface UsesFetchers
+interface FinderContract
 {
     /**
-     * @return array<Fetcher>
+     * @return array<FetcherContract>
      */
     public static function getDefaultFetchers(): array;
 
     public function resolveIpVersion(): ?IpVersion;
+
+    public function __construct();
 }

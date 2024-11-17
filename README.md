@@ -20,9 +20,7 @@ composer require srwiez/native-myip
 Easiest way to get the public IP address of the current machine is to use the `PublicIP::get()` method.
 
 ```php
-use SRWieZ\Native\MyIP\PublicIP;
-use SRWieZ\Native\MyIP\PublicIPv4;
-use SRWieZ\Native\MyIP\PublicIPv6;
+use SRWieZ\Native\MyIP\Finders\PublicIP;use SRWieZ\Native\MyIP\Finders\PublicIPv4;use SRWieZ\Native\MyIP\Finders\PublicIPv6;
 
 $ipv4 = PublicIPv4::get(); // returns your IPv4
 $ipv6 = PublicIPv6::get(); // returns your IPv6
@@ -34,9 +32,7 @@ $ipv4or6 = PublicIP::get(); // returns either IPv4 or IPv6
 If you want to use a specific fetcher, or a specific provider, you can use the `IPv4::make()` method.
 
 ```php
-use SRWieZ\Native\MyIP\Enums\DnsProvider;
-use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
-use SRWieZ\Native\MyIP\PublicIPv4;
+use SRWieZ\Native\MyIP\Enums\DnsProvider;use SRWieZ\Native\MyIP\Fetchers\DigFetcher;use SRWieZ\Native\MyIP\Finders\PublicIPv4;
 
 $ipv4 = PublicIPv4::finder()
     ->addFetcher((new DigFetcher())

@@ -2,7 +2,7 @@
 
 namespace SRWieZ\Native\MyIP\Fetchers;
 
-use SRWieZ\Native\MyIP\Contracts\Fetcher;
+use SRWieZ\Native\MyIP\Contracts\FetcherContract;
 use SRWieZ\Native\MyIP\Enums\DnsProvider;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Exceptions\Exception;
@@ -17,7 +17,7 @@ use SRWieZ\Native\MyIP\Traits\HasDnsProviders;
  *
  * @deprecated This class is not recommended for production use
  */
-class DnsGetRecordFetcher implements Fetcher
+class DnsGetRecordFetcher implements FetcherContract
 {
     use HasDnsProviders;
 
