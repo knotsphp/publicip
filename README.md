@@ -5,6 +5,7 @@
 [![License](https://poser.pugx.org/knotsphp/publicip/license)](https://packagist.org/packages/knotsphp/publicip) 
 [![PHP Version Require](https://poser.pugx.org/knotsphp/publicip/require/php)](https://packagist.org/packages/knotsphp/publicip) 
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/knotsphp/publicip/test.yml?label=Tests)](https://github.com/knotsphp/publicip/actions/workflows/test.yml)
+
 A simple PHP library to get the public IP address of the current machine.
 
 This library uses `dig` or HTTP requests to obtain the public IP address of the current machine by utilizing publicly
