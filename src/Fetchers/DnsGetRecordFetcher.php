@@ -6,45 +6,22 @@ use SRWieZ\Native\MyIP\Contracts\Fetcher;
 use SRWieZ\Native\MyIP\Enums\DnsProvider;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
 use SRWieZ\Native\MyIP\Exceptions\Exception;
+use SRWieZ\Native\MyIP\Traits\HasDnsProviders;
 
-// NOT RECOMMENDED: This fetcher uses the dns_get_record function
-// which is blocking, slow and not reliable
-// Also we can't set nameservers for the query nor use a timeout
+/**
+ * NOT RECOMMENDED: This fetcher uses the dns_get_record function
+ * which is blocking, slow and not reliable
+ * Also we can't set nameservers for the query nor use a timeout
+ *
+ * Use it as EXPERIMENTAL ONLY
+ *
+ * @deprecated This class is not recommended for production use
+ */
 class DnsGetRecordFetcher implements Fetcher
 {
-    /**
-     * @var DnsProvider[]
-     */
-    public array $providers = [];
+    use HasDnsProviders;
 
-    /**
-     * @return DnsProvider[]
-     */
-    public function getProviders(): array
-    {
-        return $this->providers;
-    }
-
-    public function from(DnsProvider $provider): self
-    {
-        $this->providers[] = $provider;
-
-        return $this;
-    }
-
-    public function addProvider(DnsProvider $provider): self
-    {
-        return $this->from($provider);
-    }
-
-    public function all(): self
-    {
-        $this->providers = DnsProvider::cases();
-
-        return $this;
-    }
-
-    public function onlyIPv4(): static
+    public function onlyIPv4(): self
     {
         // Only Akamai has a dedicated IPv4 host
         $this->providers = [DnsProvider::Akamai];
@@ -52,7 +29,7 @@ class DnsGetRecordFetcher implements Fetcher
         return $this;
     }
 
-    public function onlyIPv6(): static
+    public function onlyIPv6(): self
     {
         // Only Akamai has a dedicated IPv6 host
         $this->providers = [DnsProvider::Akamai];

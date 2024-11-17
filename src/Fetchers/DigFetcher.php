@@ -5,56 +5,13 @@ namespace SRWieZ\Native\MyIP\Fetchers;
 use SRWieZ\Native\MyIP\Contracts\Fetcher;
 use SRWieZ\Native\MyIP\Enums\DnsProvider;
 use SRWieZ\Native\MyIP\Enums\IpVersion;
+use SRWieZ\Native\MyIP\Traits\HasDnsProviders;
 
 class DigFetcher implements Fetcher
 {
+    use HasDnsProviders;
+
     public static bool $isSupported;
-
-    /**
-     * @var DnsProvider[]
-     */
-    public array $providers = [];
-
-    /**
-     * @return DnsProvider[]
-     */
-    public function getProviders(): array
-    {
-        return $this->providers;
-    }
-
-    public function from(DnsProvider $provider): self
-    {
-        $this->providers[] = $provider;
-
-        return $this;
-    }
-
-    public function addProvider(DnsProvider $provider): self
-    {
-        return $this->from($provider);
-    }
-
-    public function all(): self
-    {
-        $this->providers = DnsProvider::cases();
-
-        return $this;
-    }
-
-    public function onlyIPv4(): static
-    {
-        $this->providers = DnsProvider::onlyIPv4();
-
-        return $this;
-    }
-
-    public function onlyIPv6(): static
-    {
-        $this->providers = DnsProvider::onlyIPv6();
-
-        return $this;
-    }
 
     public function fetch(?IpVersion $versionToResolve = null): ?string
     {

@@ -4,6 +4,9 @@ namespace SRWieZ\Native\MyIP;
 
 use SRWieZ\Native\MyIP\Contracts\Fetcher;
 use SRWieZ\Native\MyIP\Contracts\UsesFetchers;
+use SRWieZ\Native\MyIP\Enums\DnsProvider;
+use SRWieZ\Native\MyIP\Enums\HttpProvider;
+use SRWieZ\Native\MyIP\Fetchers\CurlFetcher;
 use SRWieZ\Native\MyIP\Fetchers\DigFetcher;
 use SRWieZ\Native\MyIP\Traits\HasFetchers;
 
@@ -22,7 +25,15 @@ final class PublicIP implements UsesFetchers
     public static function getDefaultFetchers(): array
     {
         return [
-            (new DigFetcher)->all(),
+            (new DigFetcher)
+                ->from(DnsProvider::Cloudflare)
+                ->from(DnsProvider::Google)
+                ->from(DnsProvider::OpenDNS),
+            (new CurlFetcher)
+                ->from(HttpProvider::ifconfigco)
+                ->from(HttpProvider::ipifyorg)
+                ->from(HttpProvider::ifconfigme)
+                ->from(HttpProvider::cloudflare),
         ];
     }
 

@@ -63,7 +63,6 @@ trait HasFetchers
         foreach ($this->fetchers as $fetcher) {
             $ip = $fetcher->fetch($ip_version);
             $checkIpVersion = $this->checkIpVersion($ip, $ip_version);
-
             if ($ip && $checkIpVersion) {
                 return $ip;
             }

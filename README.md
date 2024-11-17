@@ -5,8 +5,9 @@
 [//]: # (![GitHub Workflow Status &#40;with event&#41;]&#40;https://img.shields.io/github/actions/workflow/status/srwiez/native-myip/test.yml?label=Tests&#41;)
 A simple PHP library to get the public IP address of the current machine.
 
-This library is designed to use dig, dns_get_record, or curl to obtain the public IP address of the current machine by
-utilizing publicly available whoami services.
+This library uses `dig` or HTTP requests to obtain the public IP address of the current machine by utilizing publicly available whoami services.
+
+It comes with an opinionated default configuration to use the **fastest** and most **reliable** fetchers and providers. However, it also includes a flexible API that allows you to use different fetchers and different providers.
 
 ## 🚀 Installation
 
@@ -57,7 +58,7 @@ $ipv4 = (new DigFetcher)->from(DnsProvider::Cloudflare)->fetch(IpVersion::v4);
 
 Note that this returns null instead of throwing an exception if the fetcher fails.
 
-## 🏎️ Performance
+## 🏃 Performance
 
 If you are sure that your machine has `dig` installed, you can speed up the process by setting the `isSupported`
 property to `true`.
@@ -71,15 +72,21 @@ use SRWieZ\Native\MyIP\Fetcher\DigFetcher;
 DigFetcher::$isSupported = true;
 ```
 
+If you use the `CurlFetcher`, you can set the `forceHTTP` property to `true` to use HTTP instead of HTTPS.
+Some whoami services do not support HTTPS anyway as they are meant to be used in scripts like this `curl ifconfig.co`.
+
+```php
+use SRWieZ\Native\MyIP\Fetcher\CurlFetcher;
+
+CurlFetcher::$forceHTTP = true;
+```
+
 ## 📋 TODO
 
-- PSR-18 HTTP fetcher
-- curl fetcher
-- A way to choose PSR-18 HTTP client so other tools can monitor outgoing requests
+- PSR-18 HTTP fetcher with a way to choose psr compatible client so other tools can monitor outgoing requests
 - Write tests
-- Write documentation
 - Publish v1
-- Can we use this to get local network IP addresses?
+- Look for a way to get local networks and IP addresses
 
 ## 📦 Alternatives
 

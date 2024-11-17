@@ -16,7 +16,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+      "ext-curl": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.18",

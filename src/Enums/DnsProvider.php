@@ -2,16 +2,12 @@
 
 namespace SRWieZ\Native\MyIP\Enums;
 
-// dig whoami.akamai.net. @ns1-1.akamaitech.net. +short
-// dig myip.opendns.com @resolver1.opendns.com +short
-// dig whoami.cloudflare ch txt @1.1.1.1 +short
-// dig TXT o-o.myaddr.l.google.com @ns1.google.com +short
 enum DnsProvider
 {
     case Cloudflare;
-    case Google;
+    case Google; // Can't force IPv4 or IPv6
     case OpenDNS; // Could not work in France and Portugal 🥲
-    case Akamai; // Pretty slow sometimes
+    case Akamai; // Sometimes slow to respond and random results
 
     public function getNameServer(): ?string
     {
@@ -23,21 +19,23 @@ enum DnsProvider
         };
     }
 
-    public function getIPv6Nameserver(): ?string // @phpstan-ignore return.unusedType
+    public function getIPv6Nameserver(): ?string
     {
         return match ($this) {
             self::Cloudflare => '2606:4700:4700::1111', // and 2606:4700:4700::1001
             self::OpenDNS => '2620:119:35::35', // and 2620:119:53::53
-            self::Google, self::Akamai => '2001:4860:4860::8888', // and 2001:4860:4860::8844
+            self::Akamai => '2001:4860:4860::8888', // and 2001:4860:4860::8844
+            default => null,
         };
     }
 
-    public function getIPv4Nameserver(): ?string // @phpstan-ignore return.unusedType
+    public function getIPv4Nameserver(): ?string
     {
         return match ($this) {
             self::Cloudflare => '1.1.1.1', // and 1.0.0.1
             self::OpenDNS => '208.67.222.222', // and 208.67.220.220
-            self::Google, self::Akamai => '8.8.8.8', // and 8.8.4.4
+            self::Akamai => '8.8.8.8', // and 8.8.4.4
+            default => null,
         };
     }
 
@@ -106,6 +104,13 @@ enum DnsProvider
             }
 
             return null;
+        }
+
+        if ($this === self::Google) {
+            // remove the line starting by edns0-client-subnet
+            $response = trim(implode('', array_filter(explode("\n", $response), function ($line) {
+                return strpos($line, 'edns0-client-subnet') === false;
+            })));
         }
 
         return trim($response, " \n\r\t\v\0\"");
