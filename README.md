@@ -1,4 +1,4 @@
-# native-myip
+# PublicIP
 [![Latest Stable Version](https://poser.pugx.org/knotsphp/publicip/v)](https://packagist.org/packages/knotsphp/publicip) 
 [![Total Downloads](https://poser.pugx.org/knotsphp/publicip/downloads)](https://packagist.org/packages/knotsphp/publicip) 
 [![Latest Unstable Version](https://poser.pugx.org/knotsphp/publicip/v/unstable)](https://packagist.org/packages/knotsphp/publicip) 
@@ -125,8 +125,8 @@ You can also contribute to this library by opening an issue or a pull request.
 
 ## 👥 Credits
 
-native-myip was created by Eser DENIZ.
+PublicIP was created by Eser DENIZ.
 
 ## 📝 License
 
-native-myip is licensed under the MIT License. See LICENSE for more information.
+PublicIP is licensed under the MIT License. See LICENSE for more information.
