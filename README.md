@@ -1,9 +1,9 @@
 # native-myip
-![Latest Stable Version](http://poser.pugx.org/knotsphp/publicip/v) 
-![Total Downloads](http://poser.pugx.org/knotsphp/publicip/downloads) 
-![Latest Unstable Version](http://poser.pugx.org/knotsphp/publicip/v/unstable) 
-![License](http://poser.pugx.org/knotsphp/publicip/license) 
-![PHP Version Require](http://poser.pugx.org/knotsphp/publicip/require/php) 
+![Latest Stable Version](https://poser.pugx.org/knotsphp/publicip/v) 
+![Total Downloads](https://poser.pugx.org/knotsphp/publicip/downloads) 
+![Latest Unstable Version](https://poser.pugx.org/knotsphp/publicip/v/unstable) 
+![License](https://poser.pugx.org/knotsphp/publicip/license) 
+![PHP Version Require](https://poser.pugx.org/knotsphp/publicip/require/php) 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/knotsphp/publicip/test.yml?label=Tests)
 
 A simple PHP library to get the public IP address of the current machine.
