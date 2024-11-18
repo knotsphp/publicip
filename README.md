@@ -110,10 +110,15 @@ HTTP whoami provider list
 | amazonaws.com  | ✅    |      |        | ⚠️ only IPv4  |
 
 ## 📋 TODO
+Contributions are welcome!
 
 - PSR-18 HTTP fetcher with a way to choose psr compatible client so other tools can monitor outgoing requests
 - Write tests
-- Publish v1
+
+## 🤝 Contributing
+Clone the project and run `composer update` to install the dependencies.
+
+Before pushing your changes, run `composer qa`. This will run [pint](http://github.com/laravel/pint) (code style), [phpstan](http://github.com/phpstan/phpstan) (static analysis), and [pest](http://github.com/pestphp/pest) (tests).
 
 ## 📦 Alternatives
 
