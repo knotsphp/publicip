@@ -118,7 +118,9 @@ Contributions are welcome!
 ## 🤝 Contributing
 Clone the project and run `composer update` to install the dependencies.
 
-Before pushing your changes, run `composer qa`. This will run [pint](http://github.com/laravel/pint) (code style), [phpstan](http://github.com/phpstan/phpstan) (static analysis), and [pest](http://github.com/pestphp/pest) (tests).
+Before pushing your changes, run `composer qa`. 
+
+This will run [pint](http://github.com/laravel/pint) (code style), [phpstan](http://github.com/phpstan/phpstan) (static analysis), and [pest](http://github.com/pestphp/pest) (tests).
 
 ## 📦 Alternatives
 
