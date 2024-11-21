@@ -44,7 +44,7 @@ class DigFetcher implements FetcherContract
             return null;
         }
 
-        $cmd = sprintf('dig %s %s @%s +short', $provider->getRecordType(), $host, $nameServer);
+        $cmd = sprintf('dig %s %s @%s +short +time=1', $provider->getRecordType(), $host, $nameServer);
         $response = shell_exec($cmd);
 
         if (empty($response)) {
