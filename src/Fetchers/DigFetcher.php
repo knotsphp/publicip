@@ -13,6 +13,8 @@ class DigFetcher implements FetcherContract
 
     public static bool $isSupported;
 
+    protected int $timeout = 1;
+
     public function fetch(?IpVersion $versionToResolve = null): ?string
     {
         foreach ($this->providers as $provider) {
@@ -44,7 +46,7 @@ class DigFetcher implements FetcherContract
             return null;
         }
 
-        $cmd = sprintf('dig %s %s @%s +short +time=1', $provider->getRecordType(), $host, $nameServer);
+        $cmd = sprintf('dig %s %s @%s +short +time=%s', $provider->getRecordType(), $host, $nameServer, $this->timeout);
         $response = shell_exec($cmd);
 
         if (empty($response)) {
@@ -72,5 +74,21 @@ class DigFetcher implements FetcherContract
         self::$isSupported = $isSupported;
 
         return $isSupported;
+    }
+
+    public function setTimeout(int $timeout): self
+    {
+        if ($timeout < 1) {
+            throw new \InvalidArgumentException('Timeout must be greater than 0');
+        }
+
+        $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    public function getTimeout(): int
+    {
+        return $this->timeout;
     }
 }

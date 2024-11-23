@@ -112,11 +112,10 @@ HTTP whoami provider list
 ## 📋 TODO
 Contributions are welcome!
 
-- PSR-18 HTTP fetcher with a way to choose psr compatible client so other tools can monitor outgoing requests
+- Write tests
 - use Symfony ExecutableFinder to find dig
 - use Symfony Process to run dig
-- make timeouts configurable for people who use a specific fetcher with a specific provider that are willing to wait longer
-- Write tests
+- PSR-18 HTTP fetcher with a way to choose psr compatible client so other tools can monitor outgoing requests
 
 ## 🤝 Contributing
 Clone the project and run `composer update` to install the dependencies.

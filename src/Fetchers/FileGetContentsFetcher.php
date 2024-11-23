@@ -13,6 +13,8 @@ class FileGetContentsFetcher implements FetcherContract
 
     public static bool $forceHTTP = false;
 
+    protected int $timeout;
+
     public function fetch(?IpVersion $versionToResolve = null): ?string
     {
         foreach ($this->providers as $provider) {
@@ -42,6 +44,7 @@ class FileGetContentsFetcher implements FetcherContract
             'http' => [
                 'method' => 'GET',
                 'header' => 'Accept: text/plain',
+                'timeout' => $this->timeout,
             ],
         ];
         // Force IPv4 or IPv6
@@ -58,12 +61,28 @@ class FileGetContentsFetcher implements FetcherContract
             return null;
         }
 
-        return $provider->parseResponse((string) $response);
+        return $provider->parseResponse($response);
     }
 
     public static function isSupported(): bool
     {
         // file_get_contents exists since PHP 4, no need to check
         return true;
+    }
+
+    public function setTimeout(int $timeout): self
+    {
+        if ($timeout < 1) {
+            throw new \InvalidArgumentException('Timeout must be greater than 0');
+        }
+
+        $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    public function getTimeout(): int
+    {
+        return $this->timeout;
     }
 }

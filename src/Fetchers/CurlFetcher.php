@@ -13,6 +13,8 @@ class CurlFetcher implements FetcherContract
 
     public static bool $forceHTTP = false;
 
+    protected int $timeout = 1;
+
     public function fetch(?IpVersion $versionToResolve = null): ?string
     {
         foreach ($this->providers as $provider) {
@@ -51,9 +53,9 @@ class CurlFetcher implements FetcherContract
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         // Small timeout to prevent blocking
-        curl_setopt($ch, CURLOPT_TIMEOUT, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
-        curl_setopt($ch, CURLOPT_MAXREDIRS, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
+        curl_setopt($ch, CURLOPT_MAXREDIRS, $this->timeout);
 
         // Follow redirects
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -77,5 +79,21 @@ class CurlFetcher implements FetcherContract
     {
         // check if curl is enabled
         return function_exists('curl_version');
+    }
+
+    public function setTimeout(int $timeout): self
+    {
+        if ($timeout < 1) {
+            throw new \InvalidArgumentException('Timeout must be greater than 0');
+        }
+
+        $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    public function getTimeout(): int
+    {
+        return $this->timeout;
     }
 }
