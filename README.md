@@ -31,8 +31,7 @@ $ipv4 = PublicIPv4::get(); // returns your IPv4
 $ipv6 = PublicIPv6::get(); // returns your IPv6
 $ipv4or6 = PublicIP::get(); // returns either IPv4 or IPv6
 ```
-
-[//]: # (Talk about the default configuration)
+These methods return the IP address as a `string` or `null` if the fetcher fails. No exceptions are thrown.
 
 If you want to use a specific fetcher, or a specific provider, you can use the `PublicIPv4::finder()->fetch()` method.
 
@@ -46,6 +45,7 @@ $ipv4 = PublicIPv4::finder()
         ->from(DnsProvider::OpenDNS)))
     ->fetch();
 ```
+This method gives you more control, but you will need to manage exceptions on your own.
 
 ### Advanced Usage
 
