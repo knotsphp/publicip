@@ -5,6 +5,7 @@ namespace KnotsPHP\PublicIP\Abstracts;
 use KnotsPHP\PublicIP\Contracts\FetcherContract;
 use KnotsPHP\PublicIP\Contracts\FinderContract;
 use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Exceptions\Exception;
 use KnotsPHP\PublicIP\Exceptions\IpAddressNotFound;
 use KnotsPHP\PublicIP\Exceptions\NoFetcherSpecified;
 use KnotsPHP\PublicIP\Exceptions\UnmatchedIpVersionReceived;
@@ -53,8 +54,7 @@ abstract class Finder implements FinderContract
     }
 
     /**
-     * @throws IpAddressNotFound
-     * @throws NoFetcherSpecified
+     * @throws NoFetcherSpecified|UnmatchedIpVersionReceived|IpAddressNotFound
      */
     public function fetch(): ?string
     {
@@ -104,8 +104,13 @@ abstract class Finder implements FinderContract
             return $fetcher::isSupported();
         });
 
-        return (new static)
-            ->addFetchers($fetchers)
-            ->fetch();
+        try {
+            return (new static)
+                ->addFetchers($fetchers)
+                ->fetch();
+        } catch (Exception) {
+            // We ignore these exceptions, we want ::get() to be silent
+            return null;
+        }
     }
 }

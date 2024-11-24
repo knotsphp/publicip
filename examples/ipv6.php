@@ -2,6 +2,8 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use KnotsPHP\PublicIP\Enums\DnsProvider;
+use KnotsPHP\PublicIP\Fetchers\DigFetcher;
 use KnotsPHP\PublicIP\Finders\PublicIPv6;
 
 echo PublicIPv6::get();
