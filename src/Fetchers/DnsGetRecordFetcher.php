@@ -6,6 +6,7 @@ use KnotsPHP\PublicIP\Contracts\FetcherContract;
 use KnotsPHP\PublicIP\Enums\DnsProvider;
 use KnotsPHP\PublicIP\Enums\IpVersion;
 use KnotsPHP\PublicIP\Exceptions\Exception;
+use KnotsPHP\PublicIP\Exceptions\NoProviderSpecified;
 use KnotsPHP\PublicIP\Traits\HasDnsProviders;
 
 /**
@@ -37,8 +38,16 @@ class DnsGetRecordFetcher implements FetcherContract
         return $this;
     }
 
+    /**
+     * @throws Exception
+     * @throws NoProviderSpecified
+     */
     public function fetch(?IpVersion $versionToResolve = null): ?string
     {
+        if (empty($this->providers)) {
+            throw new NoProviderSpecified;
+        }
+
         foreach ($this->providers as $provider) {
             $ip = $this->fetchFrom($provider, $versionToResolve);
             if ($ip) {
