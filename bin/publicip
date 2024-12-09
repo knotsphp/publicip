@@ -44,4 +44,4 @@ if($ip === null) {
     exit(1);
 }
 
-echo $ip;
+echo $ip . PHP_EOL;
