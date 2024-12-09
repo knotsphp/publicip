@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+use KnotsPHP\PublicIP\Finders\PublicIP;
+use KnotsPHP\PublicIP\Finders\PublicIPv4;
+use KnotsPHP\PublicIP\Finders\PublicIPv6;
+
+include $_composer_autoload_path ?? __DIR__.'/../vendor/autoload.php';
+
+require __DIR__.'/../cli/publicip.php';

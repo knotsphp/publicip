@@ -61,6 +61,32 @@ $ipv4 = (new DigFetcher)->from(DnsProvider::Cloudflare)->fetch(IpVersion::v4);
 
 Note that this returns null instead of throwing an exception if the fetcher fails.
 
+## 📚 Use in command line
+
+You can also use this library in the command line by using the `publicip` command.
+
+It's recommended to install the library globally to use it in the command line.
+```bash
+composer global require knotsphp/publicip
+```
+
+Then you can use the `publicip` command to get the public IP address of the current machine.
+```bash
+# In your project directory
+vendor/bin/publicip
+
+# Globally installed
+publicip
+
+# To get the IPv4 address
+publicip --ipv4
+publicip -4
+
+# To get the IPv6 address
+publicip --ipv6
+publicip -6
+```
+
 ## 🏃 Performance
 
 If you are sure that your machine has `dig` installed, you can speed up the process by setting the `isSupported`
