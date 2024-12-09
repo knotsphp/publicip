@@ -13,7 +13,7 @@ test('every dns provider', function (DnsProvider $dnsProvider) {
 
 })
     ->with(DnsProvider::cases())
-    // ->skip('this test is not important for now')
+    ->skip('this test is there to check external dns providers, not the fetcher itself.')
     ->skip(
         conditionOrMessage: ! DigFetcher::isSupported(),
         message: 'dig is not installed on this system.'
