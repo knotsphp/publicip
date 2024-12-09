@@ -26,4 +26,7 @@ it('returns an ipv6', function () {
 
     expect($result_code)->toBe(0)
         ->and($filtered)->toBeString();
-});
+})->skip(
+    conditionOrMessage: fn () => getenv('CI') === 'true',
+    message: 'GitHub Actions does not have IPv6 enabled'
+);
