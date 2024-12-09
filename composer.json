@@ -1,6 +1,6 @@
 {
     "name": "knotsphp/publicip",
-    "description": "Retrieve your public IP address from any operating system",
+    "description": "Fast and reliable way to get your public IP address with PHP",
     "type": "library",
     "license": "MIT",
     "autoload": {
