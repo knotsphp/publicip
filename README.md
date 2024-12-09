@@ -138,7 +138,6 @@ HTTP whoami provider list
 ## 📋 TODO
 Contributions are welcome!
 
-- Write tests
 - use Symfony ExecutableFinder to find dig
 - use Symfony Process to run dig
 - PSR-18 HTTP fetcher with a way to choose psr compatible client so other tools can monitor outgoing requests

@@ -3,7 +3,6 @@
 it('returns an ip', function () {
     exec('php cli/publicip.php', $output, $result_code);
 
-    dump(trim($output[0]));
     $filtered = filter_var(trim($output[0]), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6);
 
     expect($result_code)->toBe(0)

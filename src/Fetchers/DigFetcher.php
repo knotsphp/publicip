@@ -5,6 +5,7 @@ namespace KnotsPHP\PublicIP\Fetchers;
 use KnotsPHP\PublicIP\Contracts\FetcherContract;
 use KnotsPHP\PublicIP\Enums\DnsProvider;
 use KnotsPHP\PublicIP\Enums\IpVersion;
+use KnotsPHP\PublicIP\Exceptions\NoProviderSpecified;
 use KnotsPHP\PublicIP\Traits\HasDnsProviders;
 
 class DigFetcher implements FetcherContract
@@ -15,8 +16,15 @@ class DigFetcher implements FetcherContract
 
     protected int $timeout = 1;
 
+    /**
+     * @throws NoProviderSpecified
+     */
     public function fetch(?IpVersion $versionToResolve = null): ?string
     {
+        if (empty($this->providers)) {
+            throw new NoProviderSpecified;
+        }
+
         foreach ($this->providers as $provider) {
             $ip = $this->fetchFrom($provider, $versionToResolve);
             if ($ip) {
