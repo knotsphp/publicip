@@ -14,7 +14,7 @@ it('can fetch an ip address', function () {
 })
     ->skip(
         conditionOrMessage: ! DigFetcher::isSupported(),
-        message: 'curl is not installed on this system.'
+        message: 'dig is not installed on this system.'
     );
 
 it('throws an exception if no providers are set', function () {
@@ -24,5 +24,5 @@ it('throws an exception if no providers are set', function () {
     ->throws(NoProviderSpecified::class)
     ->skip(
         conditionOrMessage: ! DigFetcher::isSupported(),
-        message: 'curl is not installed on this system.'
+        message: 'dig is not installed on this system.'
     );

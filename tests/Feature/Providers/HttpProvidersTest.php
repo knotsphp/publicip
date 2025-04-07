@@ -13,7 +13,7 @@ test('every http provider', function (HttpProvider $httpProvider) {
 
 })
     ->with(HttpProvider::cases())
-    ->skip('this test is there to check external http providers, not the fetcher itself.')
+    ->skip('uncomment this to test external http providers')
     ->skip(
         conditionOrMessage: ! CurlFetcher::isSupported(),
         message: 'curl is not installed on this system.'
