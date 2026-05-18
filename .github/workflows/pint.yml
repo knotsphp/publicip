@@ -2,23 +2,22 @@ name: Linting
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
-    branches-ignore:
-      - 'dependabot/**'
+    branches:
+      - main
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   pint:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
-          # Credentials must persist so git-auto-commit-action can push lint fixes.
-          persist-credentials: true
+          persist-credentials: false
 
       - name: Setup PHP
         uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2.37.1
@@ -26,17 +25,8 @@ jobs:
           php-version: '8.3'
           tools: composer:v2
 
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Launch Pint inspection
-        run: vendor/bin/pint
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@be7095c202abcf573b09f20541e0ee2f6a3a9d9b # v4.9.2
-        with:
-          commit_message: PHP Linting (Pint)
-          skip_fetch: true
+      - name: Run Pint
+        run: vendor/bin/pint --test
