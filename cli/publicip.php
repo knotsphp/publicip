@@ -4,6 +4,7 @@
 use KnotsPHP\PublicIP\Finders\PublicIP;
 use KnotsPHP\PublicIP\Finders\PublicIPv4;
 use KnotsPHP\PublicIP\Finders\PublicIPv6;
+use NunoMaduro\Collision\Provider;
 
 error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
@@ -12,7 +13,7 @@ if (! class_exists('\Composer\InstalledVersions')) {
 }
 
 if (class_exists('\NunoMaduro\Collision\Provider')) {
-    (new \NunoMaduro\Collision\Provider)->register();
+    (new Provider)->register();
 }
 
 $ipVersion = null;
