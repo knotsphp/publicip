@@ -70,6 +70,11 @@ It's recommended to install the library globally to use it in the command line.
 composer global require knotsphp/publicip
 ```
 
+Or run it without installing globally via [cpx](https://github.com/laravel/cpx):
+```bash
+cpx knotsphp/publicip
+```
+
 Then you can use the `publicip` command to get the public IP address of the current machine.
 ```bash
 # In your project directory

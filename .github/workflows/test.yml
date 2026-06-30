@@ -57,3 +57,10 @@ jobs:
 
       - name: Run tests
         run: ./vendor/bin/pest
+
+      - name: Test cpx execution
+        if: matrix.os == 'ubuntu-latest' && matrix.php == '8.4'
+        run: |
+          composer global require cpx/cpx --no-interaction --prefer-dist
+          export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
+          cpx knotsphp/publicip:dev-${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} --help

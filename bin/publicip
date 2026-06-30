@@ -1,10 +1,17 @@
 #!/usr/bin/env php
 <?php
 
-use KnotsPHP\PublicIP\Finders\PublicIP;
-use KnotsPHP\PublicIP\Finders\PublicIPv4;
-use KnotsPHP\PublicIP\Finders\PublicIPv6;
+$autoloadPaths = array_filter([
+    $_composer_autoload_path ?? null,
+    __DIR__.'/../vendor/autoload.php',
+    __DIR__.'/../../../autoload.php',
+]);
 
-include $_composer_autoload_path ?? __DIR__.'/../vendor/autoload.php';
+foreach ($autoloadPaths as $autoloadPath) {
+    if (is_file($autoloadPath)) {
+        require $autoloadPath;
+        break;
+    }
+}
 
 require __DIR__.'/../cli/publicip.php';
